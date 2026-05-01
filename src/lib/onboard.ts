@@ -2910,6 +2910,11 @@ async function preflight(): Promise<ReturnType<typeof nim.detectGpu>> {
       }
       console.error("");
       console.error(`     Detail: ${portCheck.reason}`);
+      if (port === DASHBOARD_PORT) {
+        console.error("");
+        console.error("     Or use a different port instead:");
+        console.error("       NEMOCLAW_DASHBOARD_PORT=<N> nemoclaw onboard");
+      }
       process.exit(1);
     }
     console.log(`  ✓ Port ${port} available (${label})`);
